@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application</title>
+</head>
+<body>
+<h1>My First Web Application</h1>
+<section id="result"></section>
+<button id="btn"> Send Request</button>
+<script src="assets/js/code.jquery.com_jquery-3.7.0.min.js"></script>
+<script>
+
+  $("#btn").click(function () {
+    $.ajax({
+      url: "http://localhost:8080/HelloServlet_Web_exploded/test",
+
+      success: function (response) {
+        response = JSON.parse(response);
+        $("#result").html(response.message);
+      },
+
+      error: function (error) {
+      }
+    })
+  })
+</script>
+</body>
+</html>
