@@ -6,7 +6,9 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="HelloServlet" />
+          <element id="module-output" name="Application1" />
         </element>
+        <element id="directory" name="lib" />
       </element>
     </root>
   </artifact>
