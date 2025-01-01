@@ -4,6 +4,5 @@ document.getElementById("btnCustomer").addEventListener("click", function(){
     document.getElementById("order").style.display="none";
     document.getElementById("item").style.display="none";
     document.getElementById("placeORder").style.display="none";
-
 });
 

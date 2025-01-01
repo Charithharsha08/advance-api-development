@@ -22,8 +22,7 @@ public class CustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/company", "root", "Ijse@123");
+            Connection connection = CreateConnection.getConnection();
             ResultSet resultSet = connection.prepareStatement("select * from customer").executeQuery();
             resp.setContentType("application/json");
             JsonArrayBuilder allCustomers = Json.createArrayBuilder();
@@ -46,18 +45,28 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
+        Connection connection = CreateConnection.getConnection();
+        String id = req.getParameter("id");
+        String name = req.getParameter("name");
+        String address = req.getParameter("address");
+        System.out.println(id + name + address + "put");
+        try {
+            connection.prepareStatement("update customer set name='" + name + "',address='" + address + "' where id='" + id + "'").executeUpdate();
+            resp.sendRedirect("index.html");
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/company", "root", "Ijse@123");
+            Connection connection = CreateConnection.getConnection();
             String id = req.getParameter("id");
             String name = req.getParameter("name");
             String address = req.getParameter("address");
+            System.out.println(name + address);
             connection.prepareStatement("insert into customer values('" + id + "','" + name + "','" + address + "')").executeUpdate();
             resp.sendRedirect("index.html");
             connection.close();
@@ -65,4 +74,18 @@ public class CustomerServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      Connection connection = CreateConnection.getConnection();
+      String id = req.getParameter("id");
+      try {
+          connection.prepareStatement("delete from customer where id = '" + id + "'").executeUpdate();
+resp.sendRedirect("index.html");
+connection.close();
+      } catch (SQLException e) {
+          throw new RuntimeException(e);
+      }
+    }
+
 }

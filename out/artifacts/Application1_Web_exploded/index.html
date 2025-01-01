@@ -49,7 +49,7 @@
 
         <div >
           <label  class="form-label">Customer ID</label>
-          <input id="CustID" disabled type="text"  class="form-control" id="customerID" aria-describedby="emailHelp">
+          <input id="CustID" type="text"  class="form-control" id="customerID" aria-describedby="emailHelp">
         </div>
 
         <div >
@@ -389,7 +389,7 @@
       type: "GET",
       url:"http://localhost:8080/Application1_Web_exploded/customer",
       success: (response) => {
-        console.log(response)
+        console.log("response")
         let customerData = ""
         response.forEach((customer) => {
           customerData += `<tr>
@@ -403,26 +403,90 @@
     })
   }
 
-  $("btnCustSave111").click((e) => {
+  $("#btnCustSave111").click((e) => {
     e.preventDefault()
     console.log("clicked save function called")
+    const id = $('#CustID').val();
+    const name = $('#CustName').val();
+    const address = $('#CustAddress').val();
+    const contact = $('#CustContact').val();
+
     $.ajax({
       type: "POST",
       url:"http://localhost:8080/Application1_Web_exploded/customer",
       data: {
-
+       id: id,
+       name: name,
+       address: address
       },
       success: (response) => {
-        console.log(response)
+       // console.log(response)
         alert("Customer Saved")
+        fetchStudentData()
+      }
+
+    })
+  })
+
+
+  $("#btnDelteCust").click((e) => {
+    e.preventDefault()
+    if (confirm("Are you sure you want to delete this customer?")) {
+      const id = $('#CustID').val();
+        $.ajax({
+            type: "DELETE",
+            url: `http://localhost:8080/Application1_Web_exploded/customer?id=${id}`,
+          success: (response) => {
+                console.log(response)
+                alert("Customer Deleted")
+                fetchStudentData()
+            }
+        })
+    }else{
+        return;
+    }
+  })
+
+  $("#btnUpdateCust").click((e) => {
+    e.preventDefault()
+    const id = $('#CustID').val();
+    const name = $('#CustName').val();
+    const address = $('#CustAddress').val();
+    const contact = $('#CustContact').val();
+
+    $.ajax({
+      type: "PUT",
+      url:`http://localhost:8080/Application1_Web_exploded/customer?id=${id}&name=${name}&address=${address}`,
+      success: (response) => {
+        console.log(response)
+        alert("Customer Updated")
         fetchStudentData()
       }
     })
   })
 
 
-    fetchStudentData()
+  function fetchItemData() {
+    $.ajax({
+      type: "GET",
+      url:"http://localhost:8080/Application1_Web_exploded/item",
+      success: (response) => {
+        console.log("response")
+        let itemData = ""
+        response.forEach((item) => {
+          itemData += `<tr>
+                        <td>${item.code}</td>
+                        <td>${item.description}</td>
+                        <td>${item.qtyOnHand}</td>
+                        <td>${item.unitPrice}</td>
+                    </tr>`
+        })
+        $('#itemBody').html(itemData)
+      }
+    })
+  }
 
+  $()
 </script>
 </body>
 </html>
