@@ -9,3 +9,4 @@ document.getElementById("btnOrder").addEventListener("click", function(){
     document.getElementById("placeORder").style.display="block";
     document.getElementById("order").style.display="none";
 });
+

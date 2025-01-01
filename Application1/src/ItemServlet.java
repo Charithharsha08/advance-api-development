@@ -37,4 +37,51 @@ public class ItemServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Connection connection = CreateConnection.getConnection();
+        String code = req.getParameter("code");
+        try {
+            connection.prepareStatement("delete from item where id = "+code).execute();
+            resp.sendRedirect("index.html");
+            connection.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Connection connection = CreateConnection.getConnection();
+        String code = req.getParameter("code");
+        String description = req.getParameter("description");
+        double unit = Double.parseDouble(req.getParameter("unitPrice"));
+        int qty = Integer.parseInt(req.getParameter("qtyOnHand"));
+
+        try {
+            connection.prepareStatement("insert into item values("+code+",'"+description+"',"+unit+","+qty+")").execute();
+            resp.sendRedirect("index.html");
+            connection.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Connection connection = CreateConnection.getConnection();
+        String code = req.getParameter("code");
+        String description = req.getParameter("description");
+        double unit = Double.parseDouble(req.getParameter("unitPrice"));
+        int qty = Integer.parseInt(req.getParameter("qtyOnHand"));
+        System.out.println(code+description+unit+qty);
+        try {
+            connection.prepareStatement("update item set description='"+description+"',unitPrice="+unit+",qtyOnHand="+qty+" where id="+code).execute();
+            resp.sendRedirect("index.html");
+            connection.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
