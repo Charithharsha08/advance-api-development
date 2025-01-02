@@ -15,12 +15,9 @@ document.getElementById("btnItems").addEventListener("click", function (){
     document.getElementById("placeORder").style.display="none";
     document.getElementById("item").style.display="block"
     document.getElementById("order").style.display="none";
-/*
     fetchItemData()
-*/
 });
 
-/*
 function fetchItemData() {
     $.ajax({
         type: "GET",
@@ -32,14 +29,13 @@ function fetchItemData() {
                 itemData += `<tr>
                         <td>${item.code}</td>
                         <td>${item.description}</td>
-                        <td>${item.qtyOnHand}</td>
-                        <td>${item.unitPrice}</td>
+                        <td>${item.unit}</td>
+                        <td>${item.qty}</td>
                     </tr>`
             })
             $('#itemBody').html(itemData)
         }
     })
 }
-*/
 
 
