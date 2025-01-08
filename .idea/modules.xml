@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Application1/Application1.iml" filepath="$PROJECT_DIR$/Application1/Application1.iml" />
       <module fileurl="file://$PROJECT_DIR$/ExampleServlet/ExampleServlet.iml" filepath="$PROJECT_DIR$/ExampleServlet/ExampleServlet.iml" />
       <module fileurl="file://$PROJECT_DIR$/HelloServlet/HelloServlet.iml" filepath="$PROJECT_DIR$/HelloServlet/HelloServlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inbuildDBCP/inbuildDBCP.iml" filepath="$PROJECT_DIR$/inbuildDBCP/inbuildDBCP.iml" />
     </modules>
   </component>
 </project>

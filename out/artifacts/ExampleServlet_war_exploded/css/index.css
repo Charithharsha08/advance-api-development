@@ -1,0 +1,27 @@
+ #order>div{
+            position: absolute;
+            top: 10vh;
+
+        }
+        #order>div>table{
+            width: 100vw;
+        }
+        #order>h1{
+            position: absolute;
+            left: 40vw;
+
+        }
+        .btnEdit{
+            color: white;
+            background-color: orange;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .btnDelete{
+            color: white;
+            background-color: red;
+            border-radius: 5px;
+            border: none;
+        }   

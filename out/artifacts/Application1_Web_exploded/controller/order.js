@@ -219,16 +219,20 @@ $("#btnPurchase").click(() => {
         }
     });
     
-   /* $.ajax({
-        type: "PUT",
-        url: "http://localhost:8080/Application1_Web_exploded/item",
-        success: function (response) {
-            alert("Stock updated successfully!");
-            clearFields();
-        },
-        error: function (xhr, status, error) {
-            console.log("Error: " + error);
-        }
-    })*/
+ /*  $.ajax({
+       type: "POST",
+       url: "http://localhost:8080/Application1_Web_exploded/order",
+       data: {
+           orderId: orderId,
+           total: total
+       },
+       success: function (response) {
+           alert("Order placed successfully!");
+           clearFields();
+       },
+       error: function (xhr, status, error) {
+           console.log("Error: " + error);
+       }
+   });*/
 
 });
