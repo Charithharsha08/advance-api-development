@@ -80,7 +80,7 @@ public class ItemServlet extends HttpServlet {
         System.out.println("Code: "+code+" Description: "+description+" Unit: "+unit+" Quantity: "+qty+"");
         try {
             connection.prepareStatement("update item set description='"+description+"',unitPrice="+unit+",qtyOnHand="+qty+" where code='"+code+"' ").execute();
-            resp.sendRedirect("index.html");
+            resp.sendRedirect("item.js");
             connection.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
