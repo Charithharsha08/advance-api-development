@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Advance API Development.iml" filepath="$PROJECT_DIR$/Advance API Development.iml" />
       <module fileurl="file://$PROJECT_DIR$/Application1/Application1.iml" filepath="$PROJECT_DIR$/Application1/Application1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Application2/Application2.iml" filepath="$PROJECT_DIR$/Application2/Application2.iml" />
       <module fileurl="file://$PROJECT_DIR$/ExampleServlet/ExampleServlet.iml" filepath="$PROJECT_DIR$/ExampleServlet/ExampleServlet.iml" />
       <module fileurl="file://$PROJECT_DIR$/HelloServlet/HelloServlet.iml" filepath="$PROJECT_DIR$/HelloServlet/HelloServlet.iml" />
       <module fileurl="file://$PROJECT_DIR$/inbuildDBCP/inbuildDBCP.iml" filepath="$PROJECT_DIR$/inbuildDBCP/inbuildDBCP.iml" />
